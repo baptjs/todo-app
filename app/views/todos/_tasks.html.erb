@@ -3,13 +3,12 @@
 <% else %>
   <ul>
     <% user.todos.each do |todo| %>
-      <li>
-        <%= simple_form_for todo, method: :patch, remote: true do |f| %>
-          <%= f.check_box :done %>
-          <%= f.submit %>
+      <li class="d-flex align-items-baseline">
+        <%= simple_form_for todo, method: :put, remote: true do |f| %>
+          <%= f.check_box :done, data: { action: "change->update-todo#submit" } %>
         <% end %>
 
-        <p><%= todo.title %></p>
+        <p>&nbsp;<%= todo.title %></p>
       </li>
     <% end %>
   </ul>

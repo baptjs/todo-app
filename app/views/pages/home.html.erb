@@ -6,7 +6,7 @@
 
   <h2>Here are your tasks:</h2>
 
-  <div id="my-tasks">
+  <div id="my-tasks" data-controller="update-todo">
     <%= render 'todos/tasks', user: current_user %>
   </div>
 
@@ -21,7 +21,7 @@
 
     <%= f.input :due_date %>
 
-    <%= f.submit %>
+    <%= f.submit "Create" %>
   <% end %>
 
 <% end %>

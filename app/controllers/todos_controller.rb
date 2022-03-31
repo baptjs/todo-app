@@ -1,8 +1,9 @@
 class TodosController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:update]
   def create
     @todo = Todo.new(todo_params)
     @todo.user = current_user
-    if @todo.save!
+    if @todo.save
       respond_to { |format| format.js }
     else 
       render 'pages/home'
@@ -12,7 +13,8 @@ class TodosController < ApplicationController
   def update
     @todo = Todo.find(params[:id])
     @todo.update(done: params.dig(:todo, :done))
-    respond_to { |format| format.js }
+    # respond_to { |format| format.js }
+    render 'pages/home'
   end
 
   private
