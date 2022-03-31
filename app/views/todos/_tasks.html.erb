@@ -1,0 +1,20 @@
+<% if user.todos.empty? %>
+  <p>You have no task yet... Add one below!</p>
+<% else %>
+  <ul>
+    <% user.todos.each do |todo| %>
+      <li class="d-flex align-items-baseline" >
+        <%= simple_form_for todo, method: :put, remote: true do |f| %>
+          <%= f.check_box :done, data: { action: "change->update-todo#submit" } %>
+        <% end %>
+
+        <p><%= todo.title %></p>
+
+        <p><%= link_to "^", todo_move_higher_path(todo)%></p>
+
+        <p><%= link_to "v", todo_move_lower_path(todo) %></p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
