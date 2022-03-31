@@ -14,8 +14,8 @@ class User < ApplicationRecord
   def send_login_link
     generate_login_token
 
-    template = 'login_link'
-    UserMailer.send(template).deliver_now
+    # template = 'login_link'
+    UserMailer.send_login_link(self).deliver_now
   end
 
   def generate_login_token
