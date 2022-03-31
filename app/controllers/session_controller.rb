@@ -4,7 +4,7 @@ class SessionController < ApplicationController
     user_id = params[:user_id] 
     user = User.find_by(id: user_id)
   
-    if !user || !user.valid_token?
+    if !user || !user.valid_token?(token)
       redirect_to root_path, notice: 'It seems your link is invalid. Try requesting for a new login link'
     elsif user.login_token_expired?
       redirect_to root_path, notice: 'Your login link has been expired. Try requesting for a new login link.'

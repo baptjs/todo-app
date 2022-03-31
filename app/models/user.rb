@@ -25,8 +25,8 @@ class User < ApplicationRecord
   end
 
   def login_link
-    "http://localhost:3000/auth?token=#{self.token}"
-    # "https://todo-app-31032022.herokuapp.com/auth?token=#{self.token}"
+    # "http://localhost:3000/auth/#{self.id}?token=#{self.token}"
+    "https://todo-app-31032022.herokuapp.com/auth/#{self.id}?token=#{self.token}"
     
   end
 
@@ -39,6 +39,9 @@ class User < ApplicationRecord
     save!
   end
 
+  def valid_token?(token)
+    self.token == token
+  end
 
   private
 
