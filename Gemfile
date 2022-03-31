@@ -65,3 +65,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'turbolinks_render'
 gem 'acts_as_list'
+gem 'rails-ujs'

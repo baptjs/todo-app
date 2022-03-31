@@ -10,3 +10,15 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+#my-tasks p {
+  margin-left: 8px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  padding: 40px;
+}
