@@ -1,18 +1,36 @@
+<h2>Here are your tasks:</h2>
+
 <% if user.todos.empty? %>
   <p>You have no task yet... Add one below!</p>
 <% else %>
   <ul>
     <% user.todos.each do |todo| %>
       <li class="d-flex align-items-baseline" >
-        <%= simple_form_for todo, method: :put, remote: true do |f| %>
-          <%= f.check_box :done, data: { action: "change->update-todo#submit" } %>
-        <% end %>
+        <p>
+          <%= link_to todo_move_higher_path(todo), remote: true do %>
+            <i class="fa-solid fa-angle-up"></i>
+          <% end %>
+        </p>
 
-        <p><%= todo.title %></p>
+        <p>
+          <%= link_to todo_move_lower_path(todo), remote: true do %>
+            <i class="fa-solid fa-angle-down"></i>
+          <% end %>
+        </p>
 
-        <p><%= link_to "^", todo_move_higher_path(todo)%></p>
-
-        <p><%= link_to "v", todo_move_lower_path(todo) %></p>
+        <p>
+          <%= simple_form_for todo, method: :put, remote: true do |f| %>
+            <%= f.check_box :done, data: { action: "change->update-todo#submit" } %>
+          <% end %>
+        </p>
+        
+        <div> 
+          <p id="test" data-action="click->update-todo#showdetails" style="cursor: pointer"><%= todo.title %></p>
+          <ul class="d-none">
+            <li>Due date: <%= todo.due_date.month %>/<%= todo.due_date.day %>/<%= todo.due_date.year %></li>
+            <li>Description: <%= todo.description %></li>
+          </ul>
+        </div>
       </li>
     <% end %>
   </ul>
