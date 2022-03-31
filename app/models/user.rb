@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
 
+  has_many :todos
+
   before_save :format_email
 
   def format_email
