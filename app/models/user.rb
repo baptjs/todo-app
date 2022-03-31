@@ -6,4 +6,8 @@ class User < ApplicationRecord
   def format_email
     self.email = self.email.delete(' ').downcase
   end
+
+  def self.find_user_by(value)
+    where(email: value).first
+  end
 end
