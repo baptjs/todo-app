@@ -7,8 +7,14 @@
         <%= simple_form_for todo, method: :put, remote: true do |f| %>
           <%= f.check_box :done, data: { action: "change->update-todo#submit" } %>
         <% end %>
-
-        <p><%= todo.title %></p>
+        
+        <div> 
+          <p id="test" data-action="click->update-todo#showdetails" data-update-todo-id-param="<%= todo.id %>" style="cursor: pointer"><%= todo.title %></p>
+          <ul class="d-none">
+            <li>Due date: <%= todo.due_date.month %>/<%= todo.due_date.day %>/<%= todo.due_date.year %></li>
+            <li>Description: <%= todo.description %></li>
+          </ul>
+        </div>
 
         <p><%= link_to "^", todo_move_higher_path(todo)%></p>
 
