@@ -3,5 +3,23 @@
   <%= link_to "Register", register_path %>
 <% else %>
   <p>You are currently signed in as <%= current_user.email %></p>
-<% end %>
 
+  <h2>Here are your tasks:</h2>
+
+  <%= render 'todos/tasks', user: current_user %>
+
+  <h2>Create a new task</h2>
+
+  <%= simple_form_for @todo, url: todos_path, remote: true do |f| %>
+    <%= f.input :title,
+                autofocus: true,
+                required: true %>
+
+    <%= f.input :description %>
+
+    <%= f.input :due_date %>
+
+    <%= f.submit %>
+  <% end %>
+
+<% end %>
