@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% if !current_user %>
+  <%= link_to "Log in", new_session_path %>
+  <%= link_to "Register", register_path %>
+<% else %>
+  <p>You are currently signed in as <%= current_user.email %></p>
+<% end %>
+
