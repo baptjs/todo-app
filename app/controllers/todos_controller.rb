@@ -13,7 +13,18 @@ class TodosController < ApplicationController
   def update
     @todo = Todo.find(params[:id])
     @todo.update(done: params.dig(:todo, :done))
-    # respond_to { |format| format.js }
+    render 'pages/home'
+  end
+
+  def move_higher
+    @todo = Todo.find(params[:todo_id])
+    @todo.move_higher
+    render 'pages/home'
+  end
+
+  def move_lower
+    @todo = Todo.find(params[:todo_id])
+    @todo.move_lower
     render 'pages/home'
   end
 

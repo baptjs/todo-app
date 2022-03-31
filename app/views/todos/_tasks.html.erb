@@ -9,6 +9,8 @@
         <% end %>
 
         <p>&nbsp;<%= todo.title %></p>
+        <%= link_to "+", todo_move_higher_path(todo) %>
+        <%= link_to "-", todo_move_lower_path(todo) %>
       </li>
     <% end %>
   </ul>
