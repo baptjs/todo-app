@@ -1,10 +1,15 @@
 import { Controller } from "stimulus"
+import Rails from "@rails/ujs";
+// if (Rails.fire(document, "rails:attachBindings")) {
+//   Rails.start();
+// }
 
 export default class extends Controller {
   // static targets = ["details"]
 
   submit() {
-    event.target.closest("form").submit();
+    Rails.fire(event.target.closest("form"), "submit");
+    // event.target.closest("form").submit();
   }
 
   showdetails() {

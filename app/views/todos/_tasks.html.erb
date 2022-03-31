@@ -16,9 +16,9 @@
           </ul>
         </div>
 
-        <p><%= link_to "^", todo_move_higher_path(todo) %></p>
+        <p><%= link_to "^", todo_move_higher_path(todo), remote: true %></p>
 
-        <p><%= link_to "v", todo_move_lower_path(todo) %></p>
+        <p><%= link_to "v", todo_move_lower_path(todo), remote: true %></p>
       </li>
     <% end %>
   </ul>
