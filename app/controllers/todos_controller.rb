@@ -20,15 +20,13 @@ class TodosController < ApplicationController
   def move_higher
     @todo = Todo.find(params[:todo_id])
     @todo.move_higher
-    # render 'pages/home'
-    respond_to { |format| format.js }
+    render 'pages/home'
   end
 
   def move_lower
     @todo = Todo.find(params[:todo_id])
     @todo.move_lower
-    # render 'pages/home'
-    respond_to { |format| format.js }
+    render 'pages/home'
   end
 
   private
