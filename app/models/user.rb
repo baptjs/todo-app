@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
 
-  has_many :todos
+  has_many :todos, -> { order(position: :asc) }
 
   before_save :format_email
 
