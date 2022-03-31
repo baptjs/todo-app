@@ -1,29 +1,22 @@
 <% if !current_user %>
-  <%= link_to "Log in", new_session_path %>
-  <%= link_to "Register", register_path %>
+  <div class="container">
+    <h1>Welcome to my ToDo app !</h1>
+    <div class="d-flex justify-content-around align-items-center">
+      <%= link_to "Log in", new_session_path, class: 'btn btn-primary' %>
+      <%= link_to "Register", register_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
 <% else %>
-  <p>You are currently signed in as <%= current_user.email %></p>
+  <h1>TODO APP</h1>
 
-  <h2>Here are your tasks:</h2>
+  <p id="session-info"><em>You are currently signed in as <%= current_user.email %></em></p>
 
   <div id="my-tasks" data-controller="update-todo" class="container">
     <%= render 'todos/tasks', user: current_user %>
   </div>
 
-  <h2>Create a new task</h2>
-
-  <div class="container">
-    <%= simple_form_for @todo, remote: true do |f| %>
-      <%= f.input :title,
-                  autofocus: true,
-                  required: true %>
-
-      <%= f.input :description %>
-
-      <%= f.input :due_date %>
-
-      <%= f.submit "Create", class: 'btn btn-success' %>
-    <% end %>
+  <div id="new-task" class="container">
+    <%= render 'todos/new_task', todo: @todo %>
   </div>
 
 <% end %>
