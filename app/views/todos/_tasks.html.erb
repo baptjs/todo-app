@@ -3,7 +3,14 @@
 <% else %>
   <ul>
     <% user.todos.each do |todo| %>
-      <li><%= todo.title %></li>
+      <li>
+        <%= simple_form_for todo, method: :patch, remote: true do |f| %>
+          <%= f.check_box :done %>
+          <%= f.submit %>
+        <% end %>
+
+        <p><%= todo.title %></p>
+      </li>
     <% end %>
   </ul>
 <% end %>

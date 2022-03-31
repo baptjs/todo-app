@@ -10,6 +10,9 @@ class TodosController < ApplicationController
   end
 
   def update
+    @todo = Todo.find(params[:id])
+    @todo.update(done: params.dig(:todo, :done))
+    respond_to { |format| format.js }
   end
 
   private
