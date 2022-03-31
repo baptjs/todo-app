@@ -1,7 +1,8 @@
 class TodosController < ApplicationController
   def create
     @todo = Todo.new(todo_params)
-    if @todo.save
+    @todo.user = current_user
+    if @todo.save!
       respond_to { |format| format.js }
     else 
       render 'pages/home'

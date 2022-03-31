@@ -1,0 +1,10 @@
+<% if user.todos.empty? %>
+  <p>You have no task yet... Add one below!</p>
+<% else %>
+  <ul>
+    <% user.todos.each do |todo| %>
+      <li><%= todo.title %></li>
+    <% end %>
+  </ul>
+<% end %>
+
